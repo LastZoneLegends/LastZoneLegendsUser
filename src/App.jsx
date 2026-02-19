@@ -15,6 +15,7 @@ import TournamentDetail from './pages/TournamentDetail';
 import GameTournaments from './pages/GameTournaments';
 import Wallet from './pages/Wallet';
 import AddMoney from './pages/AddMoney';
+import AutoDeposit from './pages/AutoDeposit';
 import Withdraw from './pages/Withdraw';
 import Transactions from './pages/Transactions';
 import Profile from './pages/Profile';
@@ -76,6 +77,7 @@ function AppRoutes() {
         <Route path="/game/:id" element={<PrivateRoute><GameTournaments /></PrivateRoute>} />
         <Route path="/wallet" element={<PrivateRoute><Wallet /></PrivateRoute>} />
         <Route path="/wallet/add" element={<PrivateRoute><AddMoney /></PrivateRoute>} />
+        <Route path="/deposit" element={<AutoDeposit />} />
         <Route path="/wallet/withdraw" element={<PrivateRoute><Withdraw /></PrivateRoute>} />
         <Route path="/transactions" element={<PrivateRoute><Transactions /></PrivateRoute>} />
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
