@@ -1,20 +1,43 @@
 import { useState } from "react";
+import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 export default function AddMoney() {
   const [amount, setAmount] = useState("");
   const navigate = useNavigate();
 
-  const handlePay = () => {
-    if (!amount || amount < 20) {
-      alert("Minimum deposit is ₹20");
-      return;
+  const handlePay = async () => {
+  if (!amount || amount < 20) {
+    alert("Minimum deposit is ₹20");
+    return;
+  }
+
+  try {
+    const userId = getAuth().currentUser?.uid;
+
+    const res = await fetch("/.netlify/functions/create-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        amount: Number(amount),
+        userId: userId,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (data.paymentUrl) {
+      window.location.href = data.paymentUrl;
+    } else {
+      alert("Payment link failed");
     }
-
-    console.log("Amount:", amount);
-
-    // Step 9 me API call + redirect add karenge
-  };
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong");
+  }
+};
 
   return (
     <div style={{ padding: "16px", color: "#fff" }}>
@@ -84,3 +107,4 @@ export default function AddMoney() {
     </div>
   );
 }
+
