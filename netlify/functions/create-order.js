@@ -27,10 +27,14 @@ export async function handler(event) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": 947657f1d8649fbdd3ea4cc8ad3837e9,
       },
-      body: JSON.stringify(payload),
-    });
+      body: JSON.stringify({
+    token_key: process.env.ZAP_API_KEY,
+    amount: amount,
+    userId: userId,
+    redirectUrl: "https://LastZoneLegendsMain.netlify.app/payment-status",
+  }),
+});
 
     const data = await response.json();
 
