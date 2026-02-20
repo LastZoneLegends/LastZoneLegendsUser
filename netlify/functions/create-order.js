@@ -19,7 +19,7 @@ export async function handler(event) {
       amount: amount,
       currency: "INR",
       userId: userId,
-      redirectUrl: "https://yourdomain.com/payment-status",
+      redirectUrl: "https://LaztZoneLegendsMain.netlify.app/payment-status",
     };
 
     // 🔗 Zap API call
