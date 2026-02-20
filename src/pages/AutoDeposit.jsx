@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { useState, useEffect } from 'react';
+import { db } from '../firebase/config';
+import { doc, getDoc, collection, addDoc } from 'firebase/firestore';
 
 export default function AutoDeposit() {
   const [amount, setAmount] = useState("");
