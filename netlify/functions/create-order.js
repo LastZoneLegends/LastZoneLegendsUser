@@ -28,6 +28,7 @@ exports.handler = async (event) => {
     };
 
     console.log("📤 Sending payload:", payload);
+    console.log("ENV CHECK:", process.env.ZAP_API_KEY);
 
     // 🌐 Zap API Call
     const response = await fetch("https://api.zapupi.com/api/create-order", {
