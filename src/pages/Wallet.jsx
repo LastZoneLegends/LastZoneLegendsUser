@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, query, where, orderBy, limit } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { useAuth } from '../contexts/AuthContext';
@@ -13,7 +14,9 @@ import { formatCurrency, formatDateTime } from '../utils/formatters';
 export default function Wallet() {
   const { currentUser, userData } = useAuth();
   const [transactions, setTransactions] = useState([]);
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     if (currentUser) {
@@ -88,11 +91,9 @@ export default function Wallet() {
 
         {/* Action Buttons */}
         <div className="grid grid-cols-2 gap-3">
-          <Link to="/wallet/add">
-            <Button fullWidth icon={Plus} size="lg">
+            <Button fullWidth icon={Plus} size="lg" onClick={() => navigate("/wallet/add")}>
               Add Money
             </Button>
-          </Link>
           <Link to="/wallet/withdraw">
             <Button fullWidth variant="outline" icon={ArrowUpRight} size="lg">
               Withdraw
@@ -155,3 +156,4 @@ export default function Wallet() {
     </Layout>
   );
 }
+
