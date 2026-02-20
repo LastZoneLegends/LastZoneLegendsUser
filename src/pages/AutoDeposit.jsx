@@ -8,7 +8,7 @@ export default function AutoDeposit() {
 
   useEffect(() => {
     const load = async () => {
-      const snap = await getDoc(doc(db, "settings", "payment"));
+      const snap = await getDoc(doc(db, "app_settings", "main"));
       if (snap.exists()) setMin(snap.data().minDeposit);
     };
     load();
