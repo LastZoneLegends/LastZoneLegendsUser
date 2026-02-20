@@ -31,6 +31,7 @@ export async function handler(event) {
 });
 
     const data = await response.json();
+    console.log("Zap FULL RESPONSE:", data);
 
     return {
       statusCode: 200,
