@@ -88,7 +88,7 @@ export default function Wallet() {
 
         {/* Action Buttons */}
         <div className="grid grid-cols-2 gap-3">
-          <Link to="/wallet/add">
+          <Link to="/auto-deposit">
             <Button fullWidth icon={Plus} size="lg">
               Add Money
             </Button>
@@ -155,3 +155,4 @@ export default function Wallet() {
     </Layout>
   );
 }
+
