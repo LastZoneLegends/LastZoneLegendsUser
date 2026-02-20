@@ -27,7 +27,7 @@ export async function handler(event) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": API_KEY,
+        "x-api-key": 947657f1d8649fbdd3ea4cc8ad3837e9,
       },
       body: JSON.stringify(payload),
     });
