@@ -18,7 +18,7 @@ export default function Header() {
           />
           <div>
             <h1 className="text-sm font-bold text-white leading-tight">Last Zone</h1>
-            <p className="text-[10px] text-white/70">Legends</p>
+            <p className="text-[12px] font-bold text-white">Legends</p>
           </div>
         </Link>
 
@@ -45,3 +45,4 @@ export default function Header() {
     </header>
   );
 }
+
