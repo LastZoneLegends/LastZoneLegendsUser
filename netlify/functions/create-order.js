@@ -31,15 +31,17 @@ export async function handler(event) {
 });
 
     const data = await response.json();
-    console.log("Zap FULL RESPONSE:", data);
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        paymentUrl: data.paymentUrl,
-        orderId: data.orderId,
-      }),
-    };
+console.log("Zap FULL RESPONSE:", data);
+console.log("ENV API KEY:", process.env.ZAP_API_KEY);
+
+return {
+  statusCode: 200,
+  body: JSON.stringify({
+    paymentUrl: data.paymentUrl || data.payment_url || data.url,
+    orderId: data.orderId || data.order_id,
+  }),
+};
   } catch (err) {
     return {
       statusCode: 500,
