@@ -22,34 +22,45 @@ export async function handler(event) {
     console.log("Webhook Received:", data);
 
     // ✅ Only process success
-    if (status === "SUCCESS") {
-      const userRef = db.collection("users").doc(userId);
+if (status === "SUCCESS") {
+  // 🔒 Duplicate check using orderId
+  const txnRef = db.collection("transactions").doc(orderId);
+  const txnDoc = await txnRef.get();
 
-      await db.runTransaction(async (t) => {
-        const userDoc = await t.get(userRef);
+  if (txnDoc.exists) {
+    console.log("Duplicate webhook ignored");
+    return {
+      statusCode: 200,
+      body: "Already processed",
+    };
+  }
 
-        if (!userDoc.exists) {
-          throw new Error("User not found");
-        }
+  const userRef = db.collection("users").doc(userId);
 
-        const currentBalance = userDoc.data().wallet || 0;
+  await db.runTransaction(async (t) => {
+    const userDoc = await t.get(userRef);
 
-        // 💰 Wallet update
-        t.update(userRef, {
-          wallet: currentBalance + amount,
-        });
-
-        // 🧾 Transaction save
-        const txnRef = db.collection("transactions").doc();
-        t.set(txnRef, {
-          userId,
-          amount,
-          orderId,
-          status: "SUCCESS",
-          createdAt: new Date(),
-        });
-      });
+    if (!userDoc.exists) {
+      throw new Error("User not found");
     }
+
+    const currentBalance = userDoc.data().wallet || 0;
+
+    // 💰 Wallet update
+    t.update(userRef, {
+      wallet: currentBalance + amount,
+    });
+
+    // 🧾 Transaction save (orderId as doc id)
+    t.set(txnRef, {
+      userId,
+      amount,
+      orderId,
+      status: "SUCCESS",
+      createdAt: new Date(),
+    });
+  });
+}
 
     return {
       statusCode: 200,
