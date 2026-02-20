@@ -14,13 +14,7 @@ export async function handler(event) {
     const API_KEY = process.env.ZAP_API_KEY;
 
     // 🧾 Order create payload
-    const payload = {
-      merchantId: MERCHANT_ID,
-      amount: amount,
-      currency: "INR",
-      userId: userId,
-      redirectUrl: "https://LaztZoneLegendsMain.netlify.app/payment-status",
-    };
+    
 
     // 🔗 Zap API call
     const response = await fetch("https://api.zapupi.com/api/create-order", {
