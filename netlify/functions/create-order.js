@@ -23,7 +23,7 @@ export async function handler(event) {
     };
 
     // 🔗 Zap API call
-    const response = await fetch("https://api.zapupi.com/create-order", {
+    const response = await fetch("https://api.zapupi.com/api/create-order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
