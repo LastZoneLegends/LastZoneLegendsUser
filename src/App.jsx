@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { ToastProvider } from './contexts/ToastContext';
+import PaymentStatus from './pages/PaymentStatus';
 import { usePushNotifications } from './hooks/usePushNotifications';
 import Loader from './components/common/Loader';
 
@@ -78,6 +79,7 @@ function AppRoutes() {
         <Route path="/wallet/add" element={<PrivateRoute><AddMoney /></PrivateRoute>} />
         <Route path="/wallet/withdraw" element={<PrivateRoute><Withdraw /></PrivateRoute>} />
         <Route path="/transactions" element={<PrivateRoute><Transactions /></PrivateRoute>} />
+        <Route path="/payment-status" element={<PaymentStatus />} />
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
         <Route path="/my-stats" element={<PrivateRoute><MyStats /></PrivateRoute>} />
         <Route path="/my-contests" element={<PrivateRoute><MyContests /></PrivateRoute>} />
@@ -113,3 +115,4 @@ export default function App() {
     </Router>
   );
 }
+
