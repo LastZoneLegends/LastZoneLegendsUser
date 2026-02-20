@@ -6,7 +6,7 @@ const db = admin.firestore();
 exports.handler = async (event) => {
   const { amount } = JSON.parse(event.body);
 
-  const settingsDoc = await db.collection("settings").doc("payment").get();
+  const settingsDoc = await db.collection("app_setting").doc("main").get();
   const settings = settingsDoc.data();
 
   const orderId = "ORD" + Date.now();
@@ -21,7 +21,7 @@ exports.handler = async (event) => {
     body: JSON.stringify({
       amount,
       order_id: orderId,
-      redirect_url: "https://your-site.netlify.app/success",
+      redirect_url: "https://LZLUSER20.netlify.app/success",
     }),
   });
 
