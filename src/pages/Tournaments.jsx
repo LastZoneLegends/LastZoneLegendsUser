@@ -38,9 +38,8 @@ export default function Tournaments() {
     { value: 'finished', label: 'Finished' }
   ];
 
-  const filteredTournaments = activeTab === 'all'
-    ? tournaments
-    : tournaments.filter(t => t.status === activeTab);
+  const filteredTournaments =
+  tournaments.filter(t => t.status === statusFilter);
 
   if (loading) {
     return (
@@ -135,4 +134,5 @@ export default function Tournaments() {
     </Layout>
   );
 }
+
 
