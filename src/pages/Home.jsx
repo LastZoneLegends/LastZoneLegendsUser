@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, query, where, orderBy, limit } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { useAuth } from '../contexts/AuthContext';
-import { User, Wallet, Trophy, Phone, ChevronRight, Gamepad2, Calendar } from 'lucide-react';
+import { User, Wallet, Trophy, PlayCircle, checkcircle, Phone, ChevronRight, Gamepad2, Calendar } from 'lucide-react';
 import Layout from '../components/common/Layout';
 import Card from '../components/common/Card';
 import Badge from '../components/common/Badge';
