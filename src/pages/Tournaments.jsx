@@ -32,7 +32,7 @@ export default function Tournaments() {
   };
 
   const tabs = [
-    { value: 'all', label: 'All' },
+    
     { value: 'upcoming', label: 'Upcoming' },
     { value: 'live', label: 'Live' },
     { value: 'finished', label: 'Finished' }
@@ -135,3 +135,4 @@ export default function Tournaments() {
     </Layout>
   );
 }
+
