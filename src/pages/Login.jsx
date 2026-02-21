@@ -7,6 +7,8 @@ import { Mail, Lock, Eye, EyeOff, Download, X, Smartphone, Bell, BellRing } from
 import Button from '../components/common/Button';
 import Input from '../components/common/Input'
 import { auth, googleProvider } from '../firebase/config';
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { db } from "../firebase/config";
 
 // Helper to detect iOS
 const isIOS = () => {
@@ -131,7 +133,24 @@ export default function Login() {
   const handleGoogleLogin = async () => {
   try {
     const result = await signInWithPopup(auth, googleProvider);
-    console.log("Google User:", result.user);
+    const user = result.user;
+
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
+
+    // Agar user pehle se nahi hai to create karo
+    if (!userSnap.exists()) {
+      await setDoc(userRef, {
+        uid: user.uid,
+        name: user.displayName || "User",
+        email: user.email,
+        photoURL: user.photoURL || "",
+        wallet: 0,
+        role: "user",
+        createdAt: new Date()
+      });
+    }
+
     navigate("/");
   } catch (error) {
     console.error("Google Login Error:", error);
@@ -423,5 +442,6 @@ export default function Login() {
     </div>
   );
 }
+
 
 
