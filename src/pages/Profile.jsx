@@ -150,12 +150,14 @@ export default function Profile() {
           <div className="flex items-center gap-4">
             <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-purple-600 rounded-full flex items-center justify-center">
               <span className="text-3xl font-bold text-white">
-                {(userData?.name?.charAt(0) || userData?.displayName?.charAt(0) || 'U').toUpperCase()}
+                {(userData?.displayName || userData?.name || 'U')
+  .charAt(0)
+  .toUpperCase()}
               </span>
             </div>
             <div>
               <h2 className="text-xl font-bold text-white">
-  {userData?.name || userData?.displayName || 'User'}
+  {userData?.displayName || userData?.name || 'User'}
 </h2>
               <p className="text-gray-400 text-sm">{userData?.email}</p>
               <div className="flex items-center gap-2 mt-1">
@@ -343,4 +345,5 @@ export default function Profile() {
     </Layout>
   );
 }
+
 
