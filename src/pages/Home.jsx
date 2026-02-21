@@ -139,13 +139,13 @@ export default function Home() {
               <Calendar className="w-5 h-5 text-yellow-400" />
               My Contests
             </h2>
-  <div className="grid grid-cols-3 gap-5">
+  <div className="grid grid-cols-3 gap-5 mb-3 ">
     
 
     {/* Upcoming */}
     <div
       onClick={() => navigate("/my-contests?tab=upcoming")}
-      className="h-35 w-35 bg-gradient-to-br from-blue-500/20 to-purple-500/20 
+      className="h-40 w-40 bg-gradient-to-br from-blue-500/20 to-purple-500/20 
                  backdrop-blur-md border border-white/10 
                  rounded-2xl flex flex-col items-center justify-center 
                  cursor-pointer hover:scale-105 
@@ -159,7 +159,7 @@ export default function Home() {
     {/* Live */}
     <div
       onClick={() => navigate("/my-contests?tab=live")}
-      className="h-48 w-48 bg-gradient-to-br from-green-500/20 to-cyan-500/20 
+      className="h-40 w-40 bg-gradient-to-br from-green-500/20 to-cyan-500/20 
                  backdrop-blur-md border border-white/10 
                  rounded-2xl flex flex-col items-center justify-center 
                  cursor-pointer hover:scale-105 
