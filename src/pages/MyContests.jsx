@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { useAuth } from '../contexts/AuthContext';
@@ -13,6 +13,15 @@ import { formatCurrency, formatDateTime } from '../utils/formatters';
 
 export default function MyContests() {
     const navigate = useNavigate();
+    const location = useLocation();
+const queryParams = new URLSearchParams(location.search);
+const tabFromUrl = queryParams.get("tab");
+
+useEffect(() => {
+  if (tabFromUrl && ['upcoming', 'live', 'finished'].includes(tabFromUrl)) {
+    setStatusFilter(tabFromUrl);
+  }
+}, [tabFromUrl]);
     const { currentUser } = useAuth();
     const [tournaments, setTournaments] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -212,3 +221,4 @@ export default function MyContests() {
         </Layout>
     );
 }
+
