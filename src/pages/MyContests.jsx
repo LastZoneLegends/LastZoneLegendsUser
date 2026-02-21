@@ -123,16 +123,16 @@ useEffect(() => {
 
             <div className="px-4 py-4">
                 {/* Filter Chips */}
-                <div className="flex w-full mb-4">
+                <div className="flex w-full gap-3 mb-4">
   {filterOptions.map((option) => (
     <button
       key={option.value}
       onClick={() => setStatusFilter(option.value)}
-      className={`flex-1 py-3 text-sm font-semibold transition-all duration-300
+      className={`flex-1 py-3 text-sm font-semibold rounded-xl transition-all duration-300
         ${
           statusFilter === option.value
-            ? "bg-gradient-to-r from-primary-500 to-purple-500 text-white"
-            : "bg-dark-400 text-gray-400"
+            ? "bg-gradient-to-r from-primary-500 to-purple-500 text-white shadow-lg"
+            : "bg-dark-400 text-gray-400 hover:bg-dark-300"
         }`}
     >
       {option.label}
@@ -214,6 +214,7 @@ useEffect(() => {
         </Layout>
     );
 }
+
 
 
 
