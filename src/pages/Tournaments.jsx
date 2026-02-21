@@ -14,7 +14,7 @@ import { formatCurrency, formatDateTime } from '../utils/formatters';
 export default function Tournaments() {
   const [tournaments, setTournaments] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('upcoming');
+  const [activeTab, setActiveTab] = useState('all');
 
   useEffect(() => {
     fetchTournaments();
@@ -135,5 +135,6 @@ export default function Tournaments() {
     </Layout>
   );
 }
+
 
 
