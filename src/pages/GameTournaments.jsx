@@ -16,18 +16,16 @@ export default function GameTournaments() {
   const [game, setGame] = useState(null);
   const [tournaments, setTournaments] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [statusFilter, setStatusFilter] = useState('all');
+  const [statusFilter, setStatusFilter] = useState('upcoming');
 
   const filterOptions = [
-    { value: 'all', label: 'All' },
     { value: 'upcoming', label: 'Upcoming' },
     { value: 'live', label: 'Live' },
     { value: 'finished', label: 'Finished' },
   ];
 
-  const filteredTournaments = statusFilter === 'all'
-    ? tournaments
-    : tournaments.filter(t => t.status === statusFilter);
+  const filteredTournaments =
+  tournaments.filter(t => t.status === statusFilter);
 
   useEffect(() => {
     fetchData();
@@ -186,3 +184,4 @@ export default function GameTournaments() {
     </Layout>
   );
 }
+
