@@ -135,13 +135,13 @@ export default function Home() {
         </div>
         
     {/* My Contests */}
-        
-    <section className="animate-fade-in">
-      <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+
+    <section className="animate-fade-in mt-6 mb-3 ">
+  <h2 className="text-lg font-semibold text-white flex items-center gap-2">
               <Calendar className="w-5 h-5 text-yellow-400" />
               My Contests
             </h2>
-          <div className=""grid grid-cols-3 gap-4 mb-3 mt-6">
+  <div className="grid grid-cols-3 gap-4">
             
     
             {/* Upcoming */}
