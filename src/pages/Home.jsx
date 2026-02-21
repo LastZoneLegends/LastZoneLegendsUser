@@ -134,15 +134,14 @@ export default function Home() {
           ))}
         </div>
 
-    <section className="animate-fade-in mt-6">
-      <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+    <section className="animate-fade-in">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-lg font-semibold text-white flex items-center gap-2">
               <Calendar className="w-5 h-5 text-yellow-400" />
               My Contests
             </h2>
-  <div className="grid grid-cols-3 gap-5 mb-3 "></div>
     
-
-    {/* Upcoming */}
+            {/* Upcoming */}
     <div
       onClick={() => navigate("/my-contests?tab=upcoming")}
       className="h-40 w-40 bg-gradient-to-br from-blue-500/20 to-purple-500/20 
