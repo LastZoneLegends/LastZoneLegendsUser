@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, query, where, orderBy, limit } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { useAuth } from '../contexts/AuthContext';
-import { User, Wallet, Trophy, Phone, ChevronRight, Gamepad2, Calendar } from 'lucide-react';
+import { User, Wallet, Trophy, PlayCircle, CheckCircle, Phone, ChevronRight, Gamepad2, Calendar } from 'lucide-react';
 import Layout from '../components/common/Layout';
 import Card from '../components/common/Card';
 import Badge from '../components/common/Badge';
@@ -134,7 +134,51 @@ export default function Home() {
           ))}
         </div>
 
-    
+    {/* My Contest Navigation */}
+<section className="animate-fade-in mt-6">
+  <div className="grid grid-cols-3 gap-4">
+
+    {/* Upcoming */}
+    <div
+      onClick={() => navigate("/my-contests?tab=upcoming")}
+      className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 
+                 backdrop-blur-md border border-white/10 
+                 rounded-2xl p-6 text-center cursor-pointer 
+                 hover:scale-105 hover:from-blue-500/40 hover:to-purple-500/40
+                 transition-all duration-300 shadow-lg"
+    >
+      <Trophy className="w-8 h-8 mx-auto mb-3 text-blue-400" />
+      <p className="text-white font-semibold">Upcoming</p>
+    </div>
+
+    {/* Live */}
+    <div
+      onClick={() => navigate("/my-contests?tab=live")}
+      className="bg-gradient-to-br from-green-500/20 to-cyan-500/20 
+                 backdrop-blur-md border border-white/10 
+                 rounded-2xl p-6 text-center cursor-pointer 
+                 hover:scale-105 hover:from-green-500/40 hover:to-cyan-500/40
+                 transition-all duration-300 shadow-lg"
+    >
+      <PlayCircle className="w-8 h-8 mx-auto mb-3 text-green-400" />
+      <p className="text-white font-semibold">Live</p>
+    </div>
+
+    {/* Finished */}
+    <div
+      onClick={() => navigate("/my-contests?tab=finished")}
+      className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 
+                 backdrop-blur-md border border-white/10 
+                 rounded-2xl p-6 text-center cursor-pointer 
+                 hover:scale-105 hover:from-pink-500/40 hover:to-purple-500/40
+                 transition-all duration-300 shadow-lg"
+    >
+      <CheckCircle className="w-8 h-8 mx-auto mb-3 text-pink-400" />
+      <p className="text-white font-semibold">Finished</p>
+    </div>
+
+  </div>
+</section>
 
         {/* Games */}
         <section className="animate-fade-in">
