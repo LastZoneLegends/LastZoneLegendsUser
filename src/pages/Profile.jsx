@@ -30,7 +30,7 @@ import { formatCurrency, formatDate } from '../utils/formatters';
 
 export default function Profile() {
   const { userData, currentUser, logout, refreshUserData } = useAuth();
-  const [userData, setUserData] = useState(null);
+  const [ setUserData] = useState(null);
   useEffect(() => {
   const fetchUserData = async () => {
     if (!currentUser) return;
@@ -363,6 +363,7 @@ export default function Profile() {
     </Layout>
   );
 }
+
 
 
 
