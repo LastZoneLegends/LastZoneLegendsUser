@@ -140,7 +140,7 @@ export default function Home() {
     {/* Upcoming */}
     <div
       onClick={() => navigate("/my-contests?tab=upcoming")}
-      className="aspect-square bg-gradient-to-br from-blue-500/20 to-purple-500/20 
+      className="h-30 bg-gradient-to-br from-blue-500/20 to-purple-500/20 
                  backdrop-blur-md border border-white/10 
                  rounded-2xl flex flex-col items-center justify-center 
                  cursor-pointer hover:scale-105 
