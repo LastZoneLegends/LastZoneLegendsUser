@@ -32,7 +32,7 @@ export default function Tournaments() {
   };
 
   const tabs = [
-    { value: 'all', label: 'All' },
+    
     { value: 'upcoming', label: 'Upcoming' },
     { value: 'live', label: 'Live' },
     { value: 'finished', label: 'Finished' }
@@ -54,7 +54,7 @@ export default function Tournaments() {
 
   return (
     <Layout>
-      <div className="px-4 py-4">
+      <div className="py-4">
         <h1 className="text-xl font-bold text-white mb-4">Tournaments</h1>
 
         <Tabs tabs={tabs} activeTab={activeTab} onChange={setActiveTab} className="mb-4" />
@@ -135,3 +135,4 @@ export default function Tournaments() {
     </Layout>
   );
 }
+
