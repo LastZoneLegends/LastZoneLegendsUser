@@ -151,7 +151,7 @@ useEffect(() => {
                                 : `You don't have any ${statusFilter} tournaments`
                         }
                         action={
-                            <Link to="/tournaments" className="text-primary-400 hover:text-primary-300">
+                            <Link to="/home" className="text-primary-400 hover:text-primary-300">
                                 Browse tournaments →
                             </Link>
                         }
@@ -214,6 +214,7 @@ useEffect(() => {
         </Layout>
     );
 }
+
 
 
 
