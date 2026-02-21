@@ -31,6 +31,24 @@ import { formatCurrency, formatDate } from '../utils/formatters';
 export default function Profile() {
   const { userData, currentUser, logout, refreshUserData } = useAuth();
   const [userData, setUserData] = useState(null);
+  useEffect(() => {
+  const fetchUserData = async () => {
+    if (!currentUser) return;
+
+    try {
+      const userRef = doc(db, "users", currentUser.uid);
+      const snap = await getDoc(userRef);
+
+      if (snap.exists()) {
+        setUserData(snap.data());
+      }
+    } catch (error) {
+      console.error("Error fetching user:", error);
+    }
+  };
+
+  fetchUserData();
+}, [currentUser]);
   const navigate = useNavigate();
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [installModalOpen, setInstallModalOpen] = useState(false);
@@ -345,6 +363,7 @@ export default function Profile() {
     </Layout>
   );
 }
+
 
 
 
