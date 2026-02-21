@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { doc, updateDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, getdoc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import { useAuth } from '../contexts/AuthContext';
 import {
@@ -30,6 +30,7 @@ import { formatCurrency, formatDate } from '../utils/formatters';
 
 export default function Profile() {
   const { userData, currentUser, logout, refreshUserData } = useAuth();
+  const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [installModalOpen, setInstallModalOpen] = useState(false);
@@ -74,7 +75,6 @@ export default function Profile() {
       setInstallModalOpen(true);
       return;
     }
-
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
 
@@ -345,5 +345,6 @@ export default function Profile() {
     </Layout>
   );
 }
+
 
 
