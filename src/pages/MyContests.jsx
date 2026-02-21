@@ -28,7 +28,6 @@ useEffect(() => {
     const [statusFilter, setStatusFilter] = useState('all');
 
     const filterOptions = [
-        { value: 'all', label: 'All' },
         { value: 'upcoming', label: 'Upcoming' },
         { value: 'live', label: 'Live' },
         { value: 'finished', label: 'Finished' },
@@ -221,4 +220,5 @@ useEffect(() => {
         </Layout>
     );
 }
+
 
