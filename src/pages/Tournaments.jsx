@@ -14,7 +14,7 @@ import { formatCurrency, formatDateTime } from '../utils/formatters';
 export default function Tournaments() {
   const [tournaments, setTournaments] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('all');
+  const [activeTab, setActiveTab] = useState('upcoming');
 
   useEffect(() => {
     fetchTournaments();
@@ -32,15 +32,13 @@ export default function Tournaments() {
   };
 
   const tabs = [
-    { value: 'all', label: 'All' },
     { value: 'upcoming', label: 'Upcoming' },
     { value: 'live', label: 'Live' },
     { value: 'finished', label: 'Finished' }
   ];
 
-  const filteredTournaments = activeTab === 'all'
-    ? tournaments
-    : tournaments.filter(t => t.status === activeTab);
+  const filteredTournaments =
+  tournaments.filter(t => t.status === statusFilter);
 
   if (loading) {
     return (
@@ -135,3 +133,4 @@ export default function Tournaments() {
     </Layout>
   );
 }
+
