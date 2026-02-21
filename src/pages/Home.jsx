@@ -135,16 +135,17 @@ export default function Home() {
         </div>
 
     <section className="animate-fade-in mt-6">
-  <div className="grid grid-cols-3 gap-4">
-    <h2 className="text-lg font-semibold text-white flex items-center gap-2">
+      <h2 className="text-lg font-semibold text-white flex items-center gap-2">
               <Calendar className="w-5 h-5 text-yellow-400" />
               My Contests
             </h2>
+  <div className="grid grid-cols-3 gap-5">
+    
 
     {/* Upcoming */}
     <div
       onClick={() => navigate("/my-contests?tab=upcoming")}
-      className="h-100 w-100 bg-gradient-to-br from-blue-500/20 to-purple-500/20 
+      className="aspect-square bg-gradient-to-br from-blue-500/20 to-purple-500/20 
                  backdrop-blur-md border border-white/10 
                  rounded-2xl flex flex-col items-center justify-center 
                  cursor-pointer hover:scale-105 
@@ -172,7 +173,7 @@ export default function Home() {
     {/* Finished */}
     <div
       onClick={() => navigate("/my-contests?tab=finished")}
-      className="h-50 w-50 bg-gradient-to-br from-pink-500/20 to-purple-500/20 
+      className="aspect-square bg-gradient-to-br from-pink-500/20 to-purple-500/20 
                  backdrop-blur-md border border-white/10 
                  rounded-2xl flex flex-col items-center justify-center 
                  cursor-pointer hover:scale-105 
