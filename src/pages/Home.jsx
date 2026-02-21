@@ -149,7 +149,7 @@ export default function Home() {
             {/* Upcoming */}
     <div
       onClick={() => navigate("/my-contests?tab=upcoming")}
-      className="aspect-square h-25 bg-gradient-to-br from-blue-500/20 to-purple-500/20 
+      className="aspect-square h-26 bg-gradient-to-br from-blue-500/20 to-purple-500/20 
                  backdrop-blur-md border border-white/10 
                  rounded-2xl flex flex-col items-center justify-center 
                  cursor-pointer hover:scale-105 
@@ -163,7 +163,7 @@ export default function Home() {
     {/* Live */}
     <div
       onClick={() => navigate("/my-contests?tab=live")}
-      className="aspect-square h-25 bg-gradient-to-br from-green-500/20 to-cyan-500/20 
+      className="aspect-square h-26 bg-gradient-to-br from-green-500/20 to-cyan-500/20 
                  backdrop-blur-md border border-white/10 
                  rounded-2xl flex flex-col items-center justify-center 
                  cursor-pointer hover:scale-105 
@@ -177,7 +177,7 @@ export default function Home() {
     {/* Finished */}
     <div
       onClick={() => navigate("/my-contests?tab=finished")}
-      className="aspect-square h-25 bg-gradient-to-br from-pink-500/20 to-purple-500/20 
+      className="aspect-square h-26 bg-gradient-to-br from-pink-500/20 to-purple-500/20 
                  backdrop-blur-md border border-white/10 
                  rounded-2xl flex flex-col items-center justify-center 
                  cursor-pointer hover:scale-105 
