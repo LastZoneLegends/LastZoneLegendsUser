@@ -139,7 +139,7 @@ export default function Home() {
               <Calendar className="w-5 h-5 text-yellow-400" />
               My Contests
             </h2>
-  <div className="grid grid-cols-3 gap-5 mb-3 ">
+  <div className="grid grid-cols-3 gap-5 mb-3 "></div>
     
 
     {/* Upcoming */}
