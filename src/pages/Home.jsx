@@ -143,13 +143,13 @@ export default function Home() {
               My Contests
             </h2>
     </div>
-       <div className="grid grid-cols-3 gap-3">
+       <div className="grid grid-cols-3 gap-4 justify-items-center">
             
     
             {/* Upcoming */}
     <div
       onClick={() => navigate("/my-contests?tab=upcoming")}
-      className="h-40 w-40 bg-gradient-to-br from-blue-500/20 to-purple-500/20 
+      className="aspect-square bg-gradient-to-br from-blue-500/20 to-purple-500/20 
                  backdrop-blur-md border border-white/10 
                  rounded-2xl flex flex-col items-center justify-center 
                  cursor-pointer hover:scale-105 
@@ -163,7 +163,7 @@ export default function Home() {
     {/* Live */}
     <div
       onClick={() => navigate("/my-contests?tab=live")}
-      className="h-40 w-40 bg-gradient-to-br from-green-500/20 to-cyan-500/20 
+      className="aspect-square bg-gradient-to-br from-green-500/20 to-cyan-500/20 
                  backdrop-blur-md border border-white/10 
                  rounded-2xl flex flex-col items-center justify-center 
                  cursor-pointer hover:scale-105 
@@ -177,7 +177,7 @@ export default function Home() {
     {/* Finished */}
     <div
       onClick={() => navigate("/my-contests?tab=finished")}
-      className="h-40 w-40 bg-gradient-to-br from-pink-500/20 to-purple-500/20 
+      className="aspect-square bg-gradient-to-br from-pink-500/20 to-purple-500/20 
                  backdrop-blur-md border border-white/10 
                  rounded-2xl flex flex-col items-center justify-center 
                  cursor-pointer hover:scale-105 
