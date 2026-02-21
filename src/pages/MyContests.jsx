@@ -128,7 +128,7 @@ useEffect(() => {
     <button
       key={option.value}
       onClick={() => setStatusFilter(option.value)}
-      className={`flex-1 py-3 text-sm font-semibold rounded-xl transition-all duration-300
+      className={`flex-1 py-3 text-sm font-semibold rounded-2xl transition-all duration-300
         ${
           statusFilter === option.value
             ? "bg-gradient-to-r from-primary-500 to-purple-500 text-white shadow-lg"
@@ -214,6 +214,7 @@ useEffect(() => {
         </Layout>
     );
 }
+
 
 
 
