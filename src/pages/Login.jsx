@@ -130,32 +130,38 @@ export default function Login() {
     setShowInstallPopup(false);
   };
 
-  const handleGoogleLogin = async () => {
-  try {
-    const result = await signInWithPopup(auth, googleProvider);
-    const user = result.user;
+  if (!userSnap.exists()) {
+  await setDoc(userRef, {
+    uid: user.uid,
+    displayName: user.displayName || "User",
+    email: user.email,
+    photoURL: user.photoURL || "",
 
-    const userRef = doc(db, "users", user.uid);
-    const userSnap = await getDoc(userRef);
+    // Wallet Structure
+    walletBalance: 0,
+    bonusBalance: 0,
+    depositedBalance: 0,
+    winningBalance: 0,
 
-    // Agar user pehle se nahi hai to create karo
-    if (!userSnap.exists()) {
-      await setDoc(userRef, {
-        uid: user.uid,
-        name: user.displayName || "User",
-        email: user.email,
-        photoURL: user.photoURL || "",
-        wallet: 0,
-        role: "user",
-        createdAt: new Date()
-      });
-    }
+    // Game Stats
+    matchesPlayed: 0,
+    totalKills: 0,
+    totalWinnings: 0,
 
-    navigate("/");
-  } catch (error) {
-    console.error("Google Login Error:", error);
-  }
-};
+    // Account Info
+    role: "user",
+    status: "active",
+    kycStatus: "pending",
+    phone: "",
+
+    // Referral System
+    referralCode: user.uid.slice(0, 8).toUpperCase(),
+    referredBy: null,
+
+    createdAt: new Date(),
+    updatedAt: new Date()
+  });
+}
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -442,6 +448,7 @@ export default function Login() {
     </div>
   );
 }
+
 
 
 
