@@ -145,7 +145,7 @@ export default function Home() {
     {/* Upcoming */}
     <div
       onClick={() => navigate("/my-contests?tab=upcoming")}
-      className="h-48 w-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 
+      className="h-35 w-35 bg-gradient-to-br from-blue-500/20 to-purple-500/20 
                  backdrop-blur-md border border-white/10 
                  rounded-2xl flex flex-col items-center justify-center 
                  cursor-pointer hover:scale-105 
@@ -173,7 +173,7 @@ export default function Home() {
     {/* Finished */}
     <div
       onClick={() => navigate("/my-contests?tab=finished")}
-      className="h-48 w-48 bg-gradient-to-br from-pink-500/20 to-purple-500/20 
+      className="h-40 w-40 bg-gradient-to-br from-pink-500/20 to-purple-500/20 
                  backdrop-blur-md border border-white/10 
                  rounded-2xl flex flex-col items-center justify-center 
                  cursor-pointer hover:scale-105 
