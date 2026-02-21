@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { signInWithPopup } from 'firebase/auth';
 import { Mail, Lock, Eye, EyeOff, Download, X, Smartphone, Bell, BellRing } from 'lucide-react';
 import Button from '../components/common/Button';
-import Input from '../components/common/Input';
+import Input from '../components/common/Input'
+import { auth, googleProvider } from '../firebase/config';
 
 // Helper to detect iOS
 const isIOS = () => {
@@ -125,6 +127,16 @@ export default function Login() {
     setShowInstallPopup(false);
   };
 
+  const handleGoogleLogin = async () => {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    console.log("Google User:", result.user);
+    navigate("/");
+  } catch (error) {
+    console.error("Google Login Error:", error);
+  }
+};
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -214,6 +226,20 @@ export default function Login() {
             <Button type="submit" loading={loading} fullWidth size="lg">
               Sign In
             </Button>
+            <div className="mt-4">
+  <button
+    type="button"
+    onClick={handleGoogleLogin}
+    className="w-full py-3 rounded-xl bg-white text-black font-semibold flex items-center justify-center gap-2 hover:bg-gray-200 transition"
+  >
+    <img
+      src="https://www.svgrepo.com/show/475656/google-color.svg"
+      alt="Google"
+      className="w-5 h-5"
+    />
+    Continue with Google
+  </button>
+</div>
           </form>
 
           <p className="text-center text-gray-400 mt-6">
@@ -393,3 +419,4 @@ export default function Login() {
     </div>
   );
 }
+
