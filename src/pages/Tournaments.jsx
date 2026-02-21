@@ -38,7 +38,9 @@ export default function Tournaments() {
   ];
 
   const filteredTournaments =
-  tournaments.filter(t => t.status === statusFilter);
+  statusFilter === 'all'
+    ? tournaments
+    : tournaments.filter(t => t.status === statusFilter);
 
   if (loading) {
     return (
@@ -133,4 +135,5 @@ export default function Tournaments() {
     </Layout>
   );
 }
+
 
