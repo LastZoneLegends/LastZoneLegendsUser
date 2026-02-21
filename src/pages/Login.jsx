@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { signInWithPopup } from 'firebase/auth';
+import { FcGoogle } from 'react-icons/fc';
 import { Mail, Lock, Eye, EyeOff, Download, X, Smartphone, Bell, BellRing } from 'lucide-react';
 import Button from '../components/common/Button';
 import Input from '../components/common/Input'
@@ -226,18 +227,21 @@ export default function Login() {
             <Button type="submit" loading={loading} fullWidth size="lg">
               Sign In
             </Button>
-            <div className="mt-4">
+            {/* OR Divider */}
+<div className="text-center text-gray-400 my-4">
+  or Login
+</div>
+
+{/* Google Login Button */}
+<div className="flex justify-center">
   <button
     type="button"
     onClick={handleGoogleLogin}
-    className="w-full py-3 rounded-xl bg-white text-black font-semibold flex items-center justify-center gap-2 hover:bg-gray-200 transition"
+    className="w-14 h-14 flex items-center justify-center 
+               rounded-full bg-white shadow-lg 
+               hover:scale-105 transition-all duration-300"
   >
-    <img
-      src="https://www.svgrepo.com/show/475656/google-color.svg"
-      alt="Google"
-      className="w-5 h-5"
-    />
-    Continue with Google
+    <FcGoogle size={28} />
   </button>
 </div>
           </form>
@@ -419,4 +423,5 @@ export default function Login() {
     </div>
   );
 }
+
 
