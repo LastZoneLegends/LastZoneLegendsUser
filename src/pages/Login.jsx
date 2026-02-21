@@ -130,7 +130,16 @@ export default function Login() {
     setShowInstallPopup(false);
   };
 
-  if (!userSnap.exists()) {
+  const handleGoogleLogin = async () => {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    const user = result.user;
+
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
+
+    // Agar user pehle se nahi hai to create karo
+    if (!userSnap.exists()) {
   await setDoc(userRef, {
     uid: user.uid,
     displayName: user.displayName || "User",
@@ -162,6 +171,12 @@ export default function Login() {
     updatedAt: new Date()
   });
 }
+
+    navigate("/");
+  } catch (error) {
+    console.error("Google Login Error:", error);
+  }
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -448,6 +463,7 @@ export default function Login() {
     </div>
   );
 }
+
 
 
 
