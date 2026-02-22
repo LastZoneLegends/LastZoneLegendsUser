@@ -128,6 +128,8 @@ export default function Profile() {
     { icon: Phone, label: 'Contact Us', path: '/contact', color: 'text-orange-400' },
   ];
 
+  console.log("Profile userData:", userData);
+  
   return (
     <Layout>
       <div className="px-4 py-4 space-y-4">
@@ -341,3 +343,4 @@ export default function Profile() {
     </Layout>
   );
 }
+
