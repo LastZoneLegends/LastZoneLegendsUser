@@ -8,7 +8,6 @@ import Button from '../components/common/Button';
 import Input from '../components/common/Input';
 import { auth, googleProvider } from '../firebase/config';
 import { db } from '../firebase/config';
-import { useAuth } from '../contexts/AuthContext';
 
 // Helper to detect iOS
 const isIOS = () => {
@@ -32,9 +31,8 @@ export default function Login() {
   const [showInstallPopup, setShowInstallPopup] = useState(false);
   const [showNotificationPopup, setShowNotificationPopup] = useState(false);
   const [notificationPermission, setNotificationPermission] = useState('default');
-  const { login } = useAuth();
   const navigate = useNavigate();
-  const { refreshUserData } = useAuth();
+  const { login, refreshUserData } = useAuth();
 
   // Check and show notification permission popup
   useEffect(() => {
@@ -469,6 +467,7 @@ navigate("/");
     </div>
   );
 }
+
 
 
 
