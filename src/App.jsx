@@ -65,13 +65,13 @@ function AppRoutes() {
     <NotificationHandler>
       <Routes>
         {/* Public Routes */}
-        <Route path="/splash" element={<Splash />} />
+        <Route path="/" element={<Splash />} />
         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
         <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
 
         {/* Protected Routes */}
-        <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
+        <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
         <Route path="/tournament/:id" element={<PrivateRoute><TournamentDetail /></PrivateRoute>} />
         <Route path="/game/:id" element={<PrivateRoute><GameTournaments /></PrivateRoute>} />
         <Route path="/wallet" element={<PrivateRoute><Wallet /></PrivateRoute>} />
@@ -113,5 +113,6 @@ export default function App() {
     </Router>
   );
 }
+
 
 
