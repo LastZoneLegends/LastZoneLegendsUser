@@ -172,7 +172,7 @@ export default function Login() {
       });
     }
 
-navigate("/");
+navigate("/home");
 
   } catch (error) {
     console.error("Google Login Error:", error);
@@ -186,7 +186,7 @@ navigate("/");
 
     try {
       await login(email, password);
-      navigate('/');
+      navigate('/home');
     } catch (err) {
       // Convert Firebase errors to user-friendly messages
       const errorCode = err.code || '';
@@ -466,6 +466,7 @@ navigate("/");
     </div>
   );
 }
+
 
 
 
