@@ -146,6 +146,15 @@ export default function Profile() {
     { icon: Info, label: 'About Us', path: '/about', color: 'text-pink-400' },
     { icon: Phone, label: 'Contact Us', path: '/contact', color: 'text-orange-400' },
   ];
+  if (!userData) {
+  return (
+    <Layout>
+      <div style={{ color: "white", padding: "20px" }}>
+        Loading Profile...
+      </div>
+    </Layout>
+  );
+  }
 
   return (
     <Layout>
@@ -364,6 +373,7 @@ export default function Profile() {
     </Layout>
   );
 }
+
 
 
 
