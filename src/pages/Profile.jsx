@@ -155,6 +155,7 @@ if (!userData) {
     </Layout>
   );
 }
+  return <div style={{color:"white"}}>PROFILE PAGE WORKING</div>;
 
   return (
     <Layout>
@@ -178,9 +179,7 @@ if (!userData) {
           <div className="flex items-center gap-4">
             <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-purple-600 rounded-full flex items-center justify-center">
               <span className="text-3xl font-bold text-white">
-                {(userData?.displayName || userData?.name || 'U')
-  .charAt(0)
-  .toUpperCase()}
+                {(userData?.displayName || userData?.name || 'U')?.charAt(0)?.toUpperCase()}
               </span>
             </div>
             <div>
@@ -373,6 +372,7 @@ if (!userData) {
     </Layout>
   );
 }
+
 
 
 
