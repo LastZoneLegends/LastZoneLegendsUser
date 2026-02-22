@@ -1,3 +1,4 @@
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { signInWithPopup } from 'firebase/auth';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,6 +7,7 @@ import { Mail, Lock, Eye, EyeOff, Download, X, Smartphone, Bell, BellRing } from
 import Button from '../components/common/Button';
 import Input from '../components/common/Input';
 import { auth, googleProvider } from '../firebase/config';
+import { db } from '../firebase/config';
 
 // Helper to detect iOS
 const isIOS = () => {
@@ -132,9 +134,44 @@ export default function Login() {
     const result = await signInWithPopup(auth, googleProvider);
     const user = result.user;
 
-    console.log("Google user:", user.displayName, user.email);
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
 
-    // Abhi sirf login karenge, Firestore next step me add karenge
+    // Agar user pehle se exist nahi karta
+    if (!userSnap.exists()) {
+
+      const generateReferralCode = () => {
+        return "LZL" + Math.random().toString(36).substring(2, 8).toUpperCase();
+      };
+
+      await setDoc(userRef, {
+        uid: user.uid,
+        displayName: user.displayName || "User",
+        email: user.email || "",
+        phone: "",
+        photoURL: user.photoURL || "",
+
+        walletBalance: 0,
+        depositedBalance: 0,
+        winningBalance: 0,
+        bonusBalance: 0,
+
+        matchesPlayed: 0,
+        totalKills: 0,
+        totalWinnings: 0,
+
+        referralCode: generateReferralCode(),
+        referredBy: null,
+
+        role: "user",
+        status: "active",
+        kycStatus: "pending",
+
+        createdAt: new Date(),
+        updatedAt: new Date()
+      });
+    }
+
     navigate("/");
 
   } catch (error) {
@@ -429,5 +466,6 @@ export default function Login() {
     </div>
   );
 }
+
 
 
