@@ -6,6 +6,7 @@ import { usePushNotifications } from './hooks/usePushNotifications';
 import Loader from './components/common/Loader';
 
 // Pages
+import Splash from './pages/Splash';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
@@ -64,6 +65,7 @@ function AppRoutes() {
     <NotificationHandler>
       <Routes>
         {/* Public Routes */}
+        <Route path="/splash" element={<Splash />} />
         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
         <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
@@ -111,4 +113,5 @@ export default function App() {
     </Router>
   );
 }
+
 
