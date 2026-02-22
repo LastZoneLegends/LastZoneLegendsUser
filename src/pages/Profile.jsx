@@ -29,7 +29,7 @@ import Input from '../components/common/Input';
 import { formatCurrency, formatDate } from '../utils/formatters';
 
 export default function Profile() {
-  const { userData: authUserData, currentUser, logout } = useAuth();
+  const { userData: authUserData, currentUser, logout, refreshUserData } = useAuth();
   const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
@@ -364,6 +364,7 @@ export default function Profile() {
     </Layout>
   );
 }
+
 
 
 
