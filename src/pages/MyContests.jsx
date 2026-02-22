@@ -123,28 +123,22 @@ useEffect(() => {
 
             <div className="px-4 py-4">
                 {/* Filter Chips */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                    {filterOptions.map((option) => (
-                        <button
-                            key={option.value}
-                            onClick={() => setStatusFilter(option.value)}
-                            className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${statusFilter === option.value
-                                ? 'bg-gradient-to-r from-primary-500 to-purple-500 text-white shadow-lg shadow-primary-500/30'
-                                : 'bg-dark-400 text-gray-400 hover:text-white hover:bg-dark-300'
-                                }`}
-                        >
-                            {option.label}
-                            {option.value !== 'all' && (
-                                <span className={`ml-1 px-1 py-0.5 rounded-full text-xs ${statusFilter === option.value
-                                    ? 'bg-white/20'
-                                    : 'bg-dark-300'
-                                    }`}>
-                                    {getStatusCount(option.value)}
-                                </span>
-                            )}
-                        </button>
-                    ))}
-                </div>
+                <div className="flex w-full gap-3 mb-4">
+  {filterOptions.map((option) => (
+    <button
+      key={option.value}
+      onClick={() => setStatusFilter(option.value)}
+      className={`flex-1 py-3 text-sm font-semibold rounded-2xl transition-all duration-300
+        ${
+          statusFilter === option.value
+            ? "bg-gradient-to-r from-primary-500 to-purple-500 text-white shadow-lg"
+            : "bg-dark-400 text-gray-400 hover:bg-dark-300"
+        }`}
+    >
+      {option.label}
+    </button>
+  ))}
+</div>
 
                 {/* Empty State */}
                 {filteredTournaments.length === 0 ? (
@@ -220,5 +214,6 @@ useEffect(() => {
         </Layout>
     );
 }
+
 
 
