@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { ToastProvider } from './contexts/ToastContext';
@@ -65,13 +65,12 @@ function AppRoutes() {
     <NotificationHandler>
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<Splash />} />
         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/forgot-password" element={<PublicRoute><ForgotPassword /></PublicRoute>} />
         <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
 
         {/* Protected Routes */}
-        <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
+        <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
         <Route path="/tournament/:id" element={<PrivateRoute><TournamentDetail /></PrivateRoute>} />
         <Route path="/game/:id" element={<PrivateRoute><GameTournaments /></PrivateRoute>} />
         <Route path="/wallet" element={<PrivateRoute><Wallet /></PrivateRoute>} />
@@ -103,6 +102,20 @@ function AppRoutes() {
 }
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setShowSplash(false);
+  }, 2500);
+
+  return () => clearTimeout(timer);
+}, []);
+  
+  if (showSplash) {
+  return <Splash />;
+  }
+  
   return (
     <Router>
       <AuthProvider>
@@ -113,6 +126,7 @@ export default function App() {
     </Router>
   );
 }
+
 
 
 
