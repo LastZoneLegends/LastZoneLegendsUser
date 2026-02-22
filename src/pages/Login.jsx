@@ -1,5 +1,5 @@
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithRedirect, getRedirectResult } from "firebase/auth";
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -32,6 +32,21 @@ export default function Login() {
   const [showNotificationPopup, setShowNotificationPopup] = useState(false);
   const [notificationPermission, setNotificationPermission] = useState('default');
   const navigate = useNavigate();
+  useEffect(() => {
+  const handleRedirect = async () => {
+    try {
+      const result = await getRedirectResult(auth);
+
+      if (result?.user) {
+        navigate("/home");
+      }
+    } catch (error) {
+      console.error("Redirect Error:", error);
+    }
+  };
+
+  handleRedirect();
+}, []);
   const { login, refreshUserData } = useAuth();
 
   // Check and show notification permission popup
@@ -131,49 +146,7 @@ export default function Login() {
 
   const handleGoogleLogin = async () => {
   try {
-    const result = await signInWithPopup(auth, googleProvider);
-    const user = result.user;
-
-    const userRef = doc(db, "users", user.uid);
-    const userSnap = await getDoc(userRef);
-
-    // Agar user pehle se exist nahi karta
-    if (!userSnap.exists()) {
-
-      const generateReferralCode = () => {
-        return "LZL" + Math.random().toString(36).substring(2, 8).toUpperCase();
-      };
-
-      await setDoc(userRef, {
-        uid: user.uid,
-        displayName: user.displayName || "User",
-        email: user.email || "",
-        phone: "",
-        photoURL: user.photoURL || "",
-
-        walletBalance: 0,
-        depositedBalance: 0,
-        winningBalance: 0,
-        bonusBalance: 0,
-
-        matchesPlayed: 0,
-        totalKills: 0,
-        totalWinnings: 0,
-
-        referralCode: generateReferralCode(),
-        referredBy: null,
-
-        role: "user",
-        status: "active",
-        kycStatus: "pending",
-
-        createdAt: new Date(),
-        updatedAt: new Date()
-      });
-    }
-
-navigate("/home");
-
+    await signInWithRedirect(auth, googleProvider);
   } catch (error) {
     console.error("Google Login Error:", error);
   }
@@ -466,6 +439,7 @@ navigate("/home");
     </div>
   );
 }
+
 
 
 
