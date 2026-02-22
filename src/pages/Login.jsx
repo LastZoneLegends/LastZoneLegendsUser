@@ -219,7 +219,7 @@ navigate("/");
           <div className="text-center mb-8">
             <img src="/logo.jpeg" alt="Last Zone Legends" className="w-20 h-20 rounded-3xl mx-auto mb-4 object-cover" />
             <h1 className="text-2xl font-bold text-white">Welcome Back</h1>
-            <p className="text-gray-400 mt-1">Sign in to continue</p>
+            <p className="text-gray-400 mt-1">Login to continue</p>
           </div>
 
           {error && (
@@ -266,7 +266,7 @@ navigate("/");
             </Link>
 
             <Button type="submit" loading={loading} fullWidth size="lg">
-              Sign In
+              LOGIN
             </Button>
             <div className="text-center text-gray-400 my-4">
   or Login
@@ -466,6 +466,7 @@ navigate("/");
     </div>
   );
 }
+
 
 
 
