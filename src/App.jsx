@@ -51,7 +51,7 @@ function PublicRoute({ children }) {
     );
   }
 
-  return !currentUser ? children : <Navigate to="/" />;
+  return !currentUser ? children : <Navigate to="/home" />;
 }
 
 // Notification handler - listens for real-time notifications
@@ -113,6 +113,7 @@ export default function App() {
     </Router>
   );
 }
+
 
 
 
