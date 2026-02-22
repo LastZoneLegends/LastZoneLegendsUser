@@ -231,6 +231,25 @@ export default function Login() {
             <Button type="submit" loading={loading} fullWidth size="lg">
               Sign In
             </Button>
+            <div className="text-center text-gray-400 my-4">
+  or Login
+</div>
+
+<div className="flex justify-center">
+  <button
+    type="button"
+    onClick={handleGoogleLogin}
+    className="w-14 h-14 flex items-center justify-center 
+               rounded-full bg-white shadow-lg 
+               hover:scale-105 transition-all duration-300"
+  >
+    <img
+      src="https://www.svgrepo.com/show/475656/google-color.svg"
+      alt="Google"
+      className="w-6 h-6"
+    />
+  </button>
+</div>
           </form>
 
           <p className="text-center text-gray-400 mt-6">
@@ -410,4 +429,5 @@ export default function Login() {
     </div>
   );
 }
+
 
