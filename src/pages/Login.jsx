@@ -172,7 +172,6 @@ export default function Login() {
       });
     }
 
-    await refreshUserData();
 navigate("/");
 
   } catch (error) {
@@ -467,6 +466,7 @@ navigate("/");
     </div>
   );
 }
+
 
 
 
