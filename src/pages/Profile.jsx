@@ -156,7 +156,9 @@ export default function Profile() {
               </span>
             </div>
             <div>
-              <h2 className="text-xl font-bold text-white">{userData?.displayName || 'User'}</h2>
+              <h2 style={{ color: "white" }}>
+  {userData ? JSON.stringify(userData) : "userData is NULL"}
+</h2>
               <p className="text-gray-400 text-sm">{userData?.email}</p>
               <div className="flex items-center gap-2 mt-1">
                 <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border backdrop-blur-sm bg-green-500/20 text-green-400 border-green-500/30">
@@ -343,4 +345,5 @@ export default function Profile() {
     </Layout>
   );
 }
+
 
