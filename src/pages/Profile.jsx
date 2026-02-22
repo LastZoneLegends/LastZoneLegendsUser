@@ -29,8 +29,8 @@ import Input from '../components/common/Input';
 import { formatCurrency, formatDate } from '../utils/formatters';
 
 export default function Profile() {
-  const { userData, currentUser, logout, refreshUserData } = useAuth();
-  const [ setUserData] = useState(null);
+  const { userData: authUserData, currentUser, logout } = useAuth();
+  const [userData, setUserData] = useState(null);
   useEffect(() => {
   const fetchUserData = async () => {
     if (!currentUser) return;
@@ -363,6 +363,7 @@ export default function Profile() {
     </Layout>
   );
 }
+
 
 
 
