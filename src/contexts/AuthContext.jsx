@@ -75,15 +75,22 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      setCurrentUser(user);
-      
-      if (user) {
-        const userDoc = await getDoc(doc(db, 'users', user.uid));
-        if (userDoc.exists()) {
-          setUserData({ id: userDoc.id, ...userDoc.data() });
-        }
-      } else {
+    if (user) {
+   const userDocRef = doc(db, "users", user.uid);
+   const userDoc = await getDoc(userDocRef);
+
+   if (userDoc.exists()) {
+      setUserData({ id: userDoc.id, ...userDoc.data() });
+   } else {
+      // fallback: use Firebase Auth data
+      setUserData({
+         id: user.uid,
+         displayName: user.displayName || "User",
+         email: user.email,
+         photoURL: user.photoURL || null,
+      });
+   }
+} else {
         setUserData(null);
       }
       
@@ -110,3 +117,4 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
