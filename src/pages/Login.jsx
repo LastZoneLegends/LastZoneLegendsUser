@@ -1,9 +1,11 @@
+import { signInWithPopup } from 'firebase/auth';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { Mail, Lock, Eye, EyeOff, Download, X, Smartphone, Bell, BellRing } from 'lucide-react';
 import Button from '../components/common/Button';
 import Input from '../components/common/Input';
+import { auth, googleProvider } from '../firebase/config';
 
 // Helper to detect iOS
 const isIOS = () => {
@@ -124,6 +126,21 @@ export default function Login() {
   const handleDismissPopup = () => {
     setShowInstallPopup(false);
   };
+
+  const handleGoogleLogin = async () => {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    const user = result.user;
+
+    console.log("Google user:", user.displayName, user.email);
+
+    // Abhi sirf login karenge, Firestore next step me add karenge
+    navigate("/");
+
+  } catch (error) {
+    console.error("Google Login Error:", error);
+  }
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -393,3 +410,4 @@ export default function Login() {
     </div>
   );
 }
+
