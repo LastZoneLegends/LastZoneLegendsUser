@@ -31,6 +31,7 @@ import { formatCurrency, formatDate } from '../utils/formatters';
 export default function Profile() {
   const { userData: authUserData, currentUser, logout } = useAuth();
   const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
   const fetchUserData = async () => {
     if (!currentUser) return;
@@ -49,7 +50,7 @@ export default function Profile() {
 
   fetchUserData();
 }, [currentUser]);
-  const navigate = useNavigate();
+  
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [installModalOpen, setInstallModalOpen] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -363,6 +364,7 @@ export default function Profile() {
     </Layout>
   );
 }
+
 
 
 
