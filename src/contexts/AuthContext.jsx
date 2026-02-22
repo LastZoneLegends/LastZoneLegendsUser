@@ -75,30 +75,32 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    if (user) {
-   const userDocRef = doc(db, "users", user.uid);
-   const userDoc = await getDoc(userDocRef);
+   const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      setCurrentUser(user);
 
-   if (userDoc.exists()) {
-      setUserData({ id: userDoc.id, ...userDoc.data() });
-   } else {
-      // fallback: use Firebase Auth data
-      setUserData({
-         id: user.uid,
-         displayName: user.displayName || "User",
-         email: user.email,
-         photoURL: user.photoURL || null,
-      });
-   }
-} else {
-        setUserData(null);
+      if (user) {
+         const userDocRef = doc(db, "users", user.uid);
+         const userDoc = await getDoc(userDocRef);
+
+         if (userDoc.exists()) {
+            setUserData({ id: userDoc.id, ...userDoc.data() });
+         } else {
+            setUserData({
+               id: user.uid,
+               displayName: user.displayName || "User",
+               email: user.email,
+               photoURL: user.photoURL || null,
+            });
+         }
+      } else {
+         setUserData(null);
       }
-      
-      setLoading(false);
-    });
 
-    return unsubscribe;
-  }, []);
+      setLoading(false);
+   });
+
+   return unsubscribe;
+}, []);
 
   const value = {
     currentUser,
@@ -117,4 +119,5 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
 
