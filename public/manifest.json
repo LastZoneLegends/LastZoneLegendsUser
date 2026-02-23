@@ -1,6 +1,6 @@
 {
   "name": "Last Zone Legends",
-  "short_name": "Last Zone Legends",
+  "short_name": "Last Zone",
   "description": "Ultimate Gaming Tournament Platform - Join tournaments, win prizes!",
   "start_url": "/",
   "display": "standalone",
@@ -48,5 +48,6 @@
   "related_applications": []
   "version": "2"
 }
+
 
 
