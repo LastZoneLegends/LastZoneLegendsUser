@@ -105,18 +105,11 @@ export default function App() {
   const [showSplash, setShowSplash] = useState(true);
 
 useEffect(() => {
-  const alreadyShown = sessionStorage.getItem("splashShown");
-
-  if (!alreadyShown) {
-    const timer = setTimeout(() => {
-      sessionStorage.setItem("splashShown", "true");
-      setShowSplash(false);
-    }, 2500);
-
-    return () => clearTimeout(timer);
-  } else {
+  const timer = setTimeout(() => {
     setShowSplash(false);
-  }
+  }, 2500);
+
+  return () => clearTimeout(timer);
 }, []);
 
 if (showSplash) {
@@ -133,6 +126,7 @@ if (showSplash) {
     </Router>
   );
 }
+
 
 
 
