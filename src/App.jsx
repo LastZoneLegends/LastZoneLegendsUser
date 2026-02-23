@@ -102,15 +102,20 @@ function AppRoutes() {
 }
 
 export default function App() {
-  const [showSplash, setShowSplash] = useState(true);
+  const [showSplash, setShowSplash] = useState(
+  !sessionStorage.getItem("splashShown")
+);
 
 useEffect(() => {
-  const timer = setTimeout(() => {
-    setShowSplash(false);
-  }, 2500);
+  if (showSplash) {
+    const timer = setTimeout(() => {
+      sessionStorage.setItem("splashShown", "true");
+      setShowSplash(false);
+    }, 2500);
 
-  return () => clearTimeout(timer);
-}, []);
+    return () => clearTimeout(timer);
+  }
+}, [showSplash]);
   
   if (showSplash) {
   return <Splash />;
@@ -126,6 +131,7 @@ useEffect(() => {
     </Router>
   );
 }
+
 
 
 
